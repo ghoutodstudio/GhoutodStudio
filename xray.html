@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Ray Lite - GhoutodStudio</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        :root {
+            --bg-color: #0f0f11;
+            --card-bg: #18181c;
+            --text-color: #f0f0f0;
+            --text-muted: #aaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(15, 15, 17, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-container img {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-container span {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        select {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #ffd700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        @keyframes goldShine {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gold-text-animated {
+            background: linear-gradient(
+                270deg,
+                #ffd700 0%,
+                #fff5a5 25%,
+                #ffaa00 50%,
+                #fff5a5 75%,
+                #ffd700 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShine 4s linear infinite;
+        }
+
+        .gold-badge-animated {
+            display: inline-block;
+            position: relative;
+            background: rgba(255, 215, 0, 0.08);
+            color: #ffd700;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            background-image: linear-gradient(rgba(24, 24, 28, 0.9), rgba(24, 24, 28, 0.9)), 
+                              linear-gradient(270deg, #ffd700, #fff5a5, #ffaa00, #ffd700);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            background-size: 200% auto;
+            animation: goldShine 4s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        main {
+            max-width: 950px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .featured-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--card-bg), var(--card-bg)), 
+                              linear-gradient(270deg, #ffd700, #ff8800, #fff5a5, #ffd700);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            background-size: 300% 300%;
+            animation: goldShine 6s ease infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.2);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-container {
+            width: 100%;
+            max-height: 420px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 2.2rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+        }
+
+        p.description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.8rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-gold-animated {
+            background: linear-gradient(270deg, #ffd700, #ffaa00, #fff5a5, #ffd700);
+            background-size: 200% auto;
+            color: #000;
+            animation: goldShine 3s linear infinite;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-gold-animated:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-color);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card-content { padding: 1.5rem 1rem; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="GhoutodStudio Logo">
+            <span>GhoutodStudio</span>
+        </a>
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+        </select>
+    </header>
+
+    <main>
+        <div class="featured-card">
+            <div class="image-container">
+                <img src="imagenes/Xray_lite.png" alt="X-Ray Lite">
+            </div>
+            <div class="card-content">
+                <span class="gold-badge-animated" id="badgeText">★ Textura Destacada</span>
+                <h1 class="gold-text-animated">X-Ray Lite</h1>
+                <p class="description" id="descText">
+                    La textura oficial de GhoutodStudio para facilitar la búsqueda de minerales y recursos esenciales. Diseñada para un rendimiento fluido y optimizado en Minecraft Bedrock.
+                </p>
+                <div class="btn-group">
+                    <a href="https://mcpedl.com/xray-lite/" target="_blank" class="btn btn-gold-animated" id="btnMcpedl">
+                        Descargar en MCPEDL
+                    </a>
+                    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/xray-lite" target="_blank" class="btn btn-outline" id="btnCurseforge">
+                        Ver en CurseForge
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>GhoutodStudio</p>
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                badge: "★ Textura Destacada",
+                desc: "La textura oficial de GhoutodStudio para facilitar la búsqueda de minerales y recursos esenciales. Diseñada para un rendimiento fluido y optimizado en Minecraft Bedrock.",
+                mcpedl: "Descargar en MCPEDL",
+                curseforge: "Ver en CurseForge"
+            },
+            en: {
+                badge: "★ Featured Texture",
+                desc: "The official GhoutodStudio texture to make finding ores and essential resources easier. Designed for smooth and optimized performance in Minecraft Bedrock.",
+                mcpedl: "Download on MCPEDL",
+                curseforge: "View on CurseForge"
+            },
+            pt: {
+                badge: "★ Textura em Destaque",
+                desc: "A textura oficial do GhoutodStudio para facilitar a busca por minérios e recursos essenciais. Projetada para um desempenho fluido e otimizado no Minecraft Bedrock.",
+                mcpedl: "Baixar no MCPEDL",
+                curseforge: "Ver no CurseForge"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSelect").value;
+            const selectedText = translations[lang] || translations.es;
+
+            document.getElementById("badgeText").innerText = selectedText.badge;
+            document.getElementById("descText").innerText = selectedText.desc;
+            document.getElementById("btnMcpedl").innerText = selectedText.mcpedl;
+            document.getElementById("btnCurseforge").innerText = selectedText.curseforge;
+        }
+    </script>
+
+</body>
+</html>
