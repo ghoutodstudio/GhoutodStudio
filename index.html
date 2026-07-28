@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GhoutodStudio</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #11141a;
+            background-color: #000000;
             color: #ffffff;
             text-align: center;
             padding: 60px 20px;
@@ -16,24 +17,19 @@
         .container {
             max-width: 500px;
             margin: 0 auto;
-            background: #1b222d;
+            background: #0d0d0d;
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            border: 1px solid #2d3848;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            border: 1px solid #1a1a1a;
         }
-        .avatar {
-            width: 80px;
-            height: 80px;
-            background: #4ae051;
-            border-radius: 50px;
-            margin: 0 auto 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #11141a;
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 2px solid #4ae051;
         }
         h1 {
             color: #ffffff;
@@ -53,7 +49,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
             color: white;
             padding: 16px;
             text-decoration: none;
@@ -83,15 +78,16 @@
 <body>
 
     <div class="container">
-        <div class="avatar">G</div>
-        <h1>GhoutodStudio</h1>
-        <p class="subtitle">Creador de Addons - Minecraft Bedrock</p>
+        <img src="logo.png" alt="GhoutodStudio Logo" class="logo-img">
+        
+        <h2>GhoutodStudio</h2>
+        <h2>Creador de Addons - Minecraft Bedrock<h2>
         
         <a href="https://mcpedl.com/user/GhoutodStudio/" target="_blank" class="btn btn-mcpedl">
             Descargar en MCPEDL
         </a>
 
-        <a href="https://curseforge.com" target="_blank" class="btn btn-curse">
+        <a href="https://www.curseforge.com/members/GhoutodStudio/projects" target="_blank" class="btn btn-curse">
             Proyectos en CurseForge
         </a>
     </div>
