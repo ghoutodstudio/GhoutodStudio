@@ -6,91 +6,260 @@
     <title>GhoutodStudio</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding: 60px 20px;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
         }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #0d0d0d;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            border: 1px solid #1a1a1a;
+        body {
+            background-color: #030303;
+            background-image: 
+                linear-gradient(rgba(26, 32, 44, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 32, 44, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
         }
-        .logo-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 2px solid #4ae051;
+        .navbar {
+            width: 100%;
+            padding: 20px 5%;
+            background-color: rgba(6, 6, 6, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        h1 {
+        .logo-contenedor {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 700;
+            font-size: 1.4rem;
             color: #ffffff;
-            font-size: 2.4rem;
-            margin: 0 0 10px 0;
             letter-spacing: 0.5px;
         }
-        .subtitle {
-            font-size: 1.1rem;
-            color: #4ae051;
-            margin: 0 0 35px 0;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
+        .logo-web {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: drop-shadow(-4px 0 8px rgba(255, 133, 0, 0.6)) drop-shadow(4px 0 8px rgba(0, 179, 65, 0.6));
         }
-        .btn {
+        .selector-idioma {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .selector-idioma:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+        .selector-idioma option {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        .contenedor-principal {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 60px 20px 40px 20px;
+        }
+        .tarjeta-central {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .tarjeta-central h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ff8500, #00b341, #ff8500);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: brilloTexto 6s linear infinite;
+        }
+        @keyframes brilloTexto {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        .tarjeta-central p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            width: 100%;
+            max-width: 460px;
+            line-height: 1.5;
+        }
+        .bloque-botones {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            max-width: 340px;
+        }
+        .boton-plataforma {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            gap: 12px;
+            width: 100%;
             padding: 16px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 800;
             border-radius: 12px;
-            transition: transform 0.2s, background 0.2s;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(40px);
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .btn:hover {
-            transform: translateY(-2px);
+        .boton-plataforma.mostrar {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .btn-mcpedl {
-            background-color: #5c8e32;
+        .boton-plataforma.curseforge {
+            background: linear-gradient(135deg, #ff8500, #ff6000);
+            color: #ffffff;
+            border-color: rgba(255, 133, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 133, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.2);
         }
-        .btn-mcpedl:hover {
-            background-color: #4b7528;
+        .boton-plataforma.curseforge:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 133, 0, 0.4);
+            border-color: rgba(255, 133, 0, 0.8);
         }
-        .btn-curse {
-            background-color: #ff5a00;
+        .boton-plataforma.mcpedl {
+            background: linear-gradient(135deg, #00b341, #008a32);
+            color: #ffffff;
+            border-color: rgba(0, 179, 65, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 179, 65, 0.15), inset 0 1px 0 rgba(255,255,255,0.2);
         }
-        .btn-curse:hover {
-            background-color: #e04f00;
+        .boton-plataforma.mcpedl:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 179, 65, 0.4);
+            border-color: rgba(0, 179, 65, 0.8);
+        }
+        @media (min-width: 650px) {
+            .bloque-botones {
+                flex-direction: row;
+                max-width: 500px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="logo.png" alt="GhoutodStudio Logo" class="logo-img">
-        
-        <h2>GhoutodStudio</h2>
-        <h2>Creador de Addons - Minecraft Bedrock<h2>
-        
-        <a href="https://mcpedl.com/user/GhoutodStudio/" target="_blank" class="btn btn-mcpedl">
-            Descargar en MCPEDL
-        </a>
+    <header class="navbar">
+        <div class="logo-contenedor">
+            <img src="logo.png" alt="GhoutodStudio Logo" class="logo-web">
+            <span>GhoutodStudio</span>
+        </div>
+        <select id="selectorIdioma" class="selector-idioma">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+        </select>
+    </header>
 
-        <a href="https://www.curseforge.com/members/GhoutodStudio/projects" target="_blank" class="btn btn-curse">
-            Proyectos en CurseForge
-        </a>
-    </div>
+    <main class="contenedor-principal">
+        <div class="tarjeta-central">
+            <h1 id="txtTitulo">addons & texturas</h1>
+            <p id="txtSubtitulo">Elige una plataforma para descargar nuestros complementos.</p>
+
+            <div class="bloque-botones">
+                <a href="https://www.curseforge.com/members/ghoutodstudio/projects" target="_blank" class="boton-plataforma curseforge">
+                    CurseForge
+                </a>
+
+                <a href="https://mcpedl.com/user/GhoutodStudio/" target="_blank" class="boton-plataforma mcpedl">
+                    Mcpedl
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const traducciones = {
+            es: {
+                titulo: "addons & texturas",
+                subtitulo: "Elige una plataforma para descargar nuestros complementos."
+            },
+            en: {
+                titulo: "addons & textures",
+                subtitulo: "Choose a platform to download our add-ons."
+            },
+            pt: {
+                titulo: "addons & texturas",
+                subtitulo: "Escolha uma plataforma para baixar nossos complementos."
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const botones = document.querySelectorAll('.boton-plataforma');
+            const selector = document.getElementById('selectorIdioma');
+            const elTitulo = document.getElementById('txtTitulo');
+            const elSubtitulo = document.getElementById('txtSubtitulo');
+            
+            const idiomaGuardado = localStorage.getItem('idiomaPreferido') || 'es';
+            selector.value = idiomaGuardado;
+            aplicarIdioma(idiomaGuardado);
+
+            botones.forEach((boton, indice) => {
+                setTimeout(() => {
+                    boton.classList.add('mostrar');
+                }, (indice + 1) * 250);
+            });
+
+            botones.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    boton.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        boton.style.transform = 'translateY(-5px) scale(1.03)';
+                    }, 100);
+                });
+            });
+
+            selector.addEventListener('change', (e) => {
+                const idiomaSeleccionado = e.target.value;
+                localStorage.setItem('idiomaPreferido', idiomaSeleccionado);
+                aplicarIdioma(idiomaSeleccionado);
+            });
+
+            function aplicarIdioma(lang) {
+                elTitulo.textContent = traducciones[lang].titulo;
+                elSubtitulo.textContent = traducciones[lang].subtitulo;
+            }
+        });
+    </script>
 
 </body>
 </html>
