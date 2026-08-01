@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Verificación de Google Search Console -->
+    <meta name="google-site-verification" content="PEGA_AQUI_TU_CODIGO_DE_VERIFICACION" />
+
+    <title>SergioCraftMc | Canal de Minecraft</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-principal: #12161a;
+            --bg-secundario: #1a2026;
+            --verde-mc: #47882c;
+            --verde-hover: #5ba33a;
+            --texto-blanco: #ffffff;
+            --texto-gris: #a0aec0;
+            --fuente: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            font-family: var(--fuente);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(26, 32, 38, 0.95);
+            width: 100%;
+            border-bottom: 2px solid #2d3748;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle, rgba(71,136,44,0.15) 0%, rgba(18,22,26,1) 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--verde-mc);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(71, 136, 44, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--texto-gris);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-cta {
+            background-color: var(--verde-mc);
+            color: var(--texto-blanco);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(71, 136, 44, 0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--verde-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(91, 163, 58, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--texto-gris);
+            font-size: 0.9rem;
+            border-top: 1px solid #2d3748;
+            background-color: var(--bg-secundario);
+        }
+
+        .credits {
+            margin-top: 0.4rem;
+            font-weight: 600;
+            color: var(--verde-mc);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo-area">
+                <img src="logo.png" alt="Logo SergioCraftMc" class="nav-logo">
+                <span>SergioCraftMc</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="foto.png" alt="Foto de perfil SergioCraftMc" class="profile-pic">
+            <h1>¡Bienvenidos al bloque definitivo!</h1>
+            <p>Videos de Minecraft Bedrock.</p>
+            <a href="https://youtube.com/@sergiocraftmc?si=yncMYSpPv0ip1f99" target="_blank" class="btn-cta">Suscríbete en YouTube</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SergioCraftMc. Creado con ❤️ para la comunidad de Minecraft.</p>
+        <p class="credits">By GhostouStudio</p>
+    </footer>
+
+</body>
+</html>
